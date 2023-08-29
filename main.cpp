@@ -26,10 +26,7 @@ int main()
         arrClasses[i] = input;
     }
 
-    for (int i = 0; i < totalClasses; i++)
-    {
-        std::cout << arrClasses[i] << std::endl;
-    }
+    const std::vector<std::string> days_of_week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
     return 0;
 }
