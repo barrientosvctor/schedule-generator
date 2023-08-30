@@ -4,7 +4,9 @@
 
 int main()
 {
+    const std::vector<std::string> days_of_week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
     int weeks, classes, totalClasses;
+
     std::cout << "Schedule Generator." << std::endl;
     std::cout << "How many weeks do you want your schedule to have?: ";
     std::cin >> weeks;
@@ -26,7 +28,24 @@ int main()
         arrClasses[i] = input;
     }
 
-    const std::vector<std::string> days_of_week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    // puts the respective day of week in every schedule
+    int i = 0, day = 0;
+    do
+    {
+        arrClasses.insert(arrClasses.begin() + i, days_of_week[day]);
+        arrClasses.insert(arrClasses.begin() + i + classes + 1, " ");
+
+        i += classes + 2;
+        day++;
+
+        if (day > days_of_week.size() - 1)
+            day = 0;
+    } while (i < arrClasses.size() && day < days_of_week.size());
+
+    for (std::string item : arrClasses)
+    {
+        std::cout << item << std::endl;
+    }
 
     return 0;
 }
