@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #define CLASS_DAYS 5
+#define WHITESPACES_PER_SCHEDULE CLASS_DAYS
 
 int main()
 {
@@ -41,6 +43,15 @@ int main()
         if (day > days_of_week.size() - 1)
             day = 0;
     } while (i < arrClasses.size() && day < days_of_week.size());
+
+    if (weeks > 1)
+        for (int iterator = 0, sum = 0; iterator < arrClasses.size(); iterator += (classes * CLASS_DAYS) + CLASS_DAYS + WHITESPACES_PER_SCHEDULE, sum++)
+        {
+            if (iterator >= arrClasses.size() - sum)
+                continue;
+            else
+                arrClasses.insert(arrClasses.begin() + iterator + sum, "---- WEEK " + std::to_string(sum + 1) + " ----");
+        }
 
     for (std::string item : arrClasses)
     {
