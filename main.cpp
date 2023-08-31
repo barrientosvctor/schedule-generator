@@ -45,6 +45,7 @@ int main()
     } while (i < arrClasses.size() && day < days_of_week.size());
 
     if (weeks > 1)
+        // separators per week
         for (int iterator = 0, sum = 0; iterator < arrClasses.size(); iterator += (classes * CLASS_DAYS) + CLASS_DAYS + WHITESPACES_PER_SCHEDULE, sum++)
         {
             if (iterator >= arrClasses.size() - sum)
