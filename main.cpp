@@ -49,7 +49,7 @@ int main()
         for (int iterator = 0, sum = 0; iterator < arrClasses.size(); iterator += (classes * CLASS_DAYS) + CLASS_DAYS + WHITESPACES_PER_SCHEDULE, sum++)
         {
             if (iterator >= arrClasses.size() - sum)
-                continue;
+                break;
             else
                 arrClasses.insert(arrClasses.begin() + iterator + sum, "---- WEEK " + std::to_string(sum + 1) + " ----");
         }
