@@ -1,12 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#define CLASS_DAYS 5
-#define WHITESPACES_PER_SCHEDULE CLASS_DAYS
+#include "vector.h"
 
 int main()
 {
-    const std::vector<std::string> days_of_week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
     int weeks, classes, totalClasses;
 
     std::cout << "Schedule Generator." << std::endl;
@@ -30,29 +25,10 @@ int main()
         arrClasses[i] = input;
     }
 
-    // puts the respective day of week in every schedule
-    int i = 0, day = 0;
-    do
-    {
-        arrClasses.insert(arrClasses.begin() + i, days_of_week[day]);
-        arrClasses.insert(arrClasses.begin() + i + classes + 1, " ");
-
-        i += classes + 2;
-        day++;
-
-        if (day > days_of_week.size() - 1)
-            day = 0;
-    } while (i < arrClasses.size() && day < days_of_week.size());
+    put_week_days_to_vector(arrClasses, classes);
 
     if (weeks > 1)
-        // separators per week
-        for (int iterator = 0, sum = 0; iterator < arrClasses.size(); iterator += (classes * CLASS_DAYS) + CLASS_DAYS + WHITESPACES_PER_SCHEDULE, sum++)
-        {
-            if (iterator >= arrClasses.size() - sum)
-                break;
-            else
-                arrClasses.insert(arrClasses.begin() + iterator + sum, "---- WEEK " + std::to_string(sum + 1) + " ----");
-        }
+        put_separators_per_week_to_vector(arrClasses, classes);
 
     for (std::string item : arrClasses)
     {
