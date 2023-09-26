@@ -1,4 +1,7 @@
 #include "vector.h"
+#include "file.h"
+
+void print_schedule(std::vector<std::string> &);
 
 int main()
 {
@@ -30,10 +33,38 @@ int main()
     if (weeks > 1)
         put_separators_per_week_to_vector(arrClasses, classes);
 
-    for (std::string item : arrClasses)
+    std::string filename;
+
+    std::cout << "I will save a text file in the current directory where this executable is located." << std::endl;
+    std::cout << "Please enter a name for the file: ";
+
+    std::getline(std::cin, filename);
+
+    const std::string FILE_EXTENSION = ".txt";
+    const std::string FILE = filename + FILE_EXTENSION;
+
+    std::ofstream stream(FILE);
+
+    // checks if stream was created correctly
+    if (!stream)
+        print_schedule(arrClasses);
+    else
     {
-        std::cout << item << std::endl;
+        if (!stream.is_open())
+            std::cout << "Unable to open the file." << std::endl;
+
+        write_schedule_into_file(stream, arrClasses);
+        stream.close();
+        std::cout << "The schedule was written correctly to the text file. Check it out now!" << std::endl;
     }
 
     return 0;
+}
+
+void print_schedule(std::vector<std::string> &vector_classes)
+{
+    for (std::string item : vector_classes)
+    {
+        std::cout << item << std::endl;
+    }
 }
