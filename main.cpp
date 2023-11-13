@@ -2,6 +2,7 @@
 #include "file.h"
 
 void print_schedule(std::vector<std::string> &);
+const std::string assignFileName(std::string name);
 
 int main()
 {
@@ -41,7 +42,7 @@ int main()
     std::getline(std::cin, filename);
 
     const std::string FILE_EXTENSION = ".txt";
-    const std::string FILE = filename + FILE_EXTENSION;
+    const std::string FILE = assignFileName(filename) + FILE_EXTENSION;
 
     std::ofstream stream(FILE);
 
@@ -67,4 +68,10 @@ void print_schedule(std::vector<std::string> &vector_classes)
     {
         std::cout << item << std::endl;
     }
+}
+
+const std::string assignFileName(std::string name) {
+    if (name.empty()) return "schedule";
+
+    return name;
 }
