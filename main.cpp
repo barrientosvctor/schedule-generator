@@ -1,8 +1,17 @@
 #include "vector.h"
 #include "file.h"
 
-void print_schedule(std::vector<std::string> &);
-const std::string assignFileName(std::string name);
+inline void print_schedule(std::vector<std::string> &vector_classes)
+{
+    for (std::string item : vector_classes)
+    {
+        std::cout << item << std::endl;
+    }
+}
+
+inline const std::string assignFileName(std::string const name) {
+    return name.empty() ? "schedule" : name;
+}
 
 int main()
 {
@@ -29,11 +38,6 @@ int main()
         arrClasses[i] = input;
     }
 
-    put_week_days_to_vector(arrClasses, classes);
-
-    if (weeks > 1)
-        put_separators_per_week_to_vector(arrClasses, classes);
-
     std::string filename;
 
     std::cout << "I will save a text file in the current directory where this executable is located." << std::endl;
@@ -43,6 +47,11 @@ int main()
 
     const std::string FILE_EXTENSION = ".txt";
     const std::string FILE = assignFileName(filename) + FILE_EXTENSION;
+
+    put_week_days_to_vector(arrClasses, classes);
+
+    if (weeks > 1)
+        put_separators_per_week_to_vector(arrClasses, classes);
 
     std::ofstream stream(FILE);
 
@@ -60,18 +69,4 @@ int main()
     }
 
     return 0;
-}
-
-void print_schedule(std::vector<std::string> &vector_classes)
-{
-    for (std::string item : vector_classes)
-    {
-        std::cout << item << std::endl;
-    }
-}
-
-const std::string assignFileName(std::string name) {
-    if (name.empty()) return "schedule";
-
-    return name;
 }
