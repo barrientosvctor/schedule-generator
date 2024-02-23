@@ -4,7 +4,7 @@ const std::vector<std::string> WEEK_DAYS = {"Monday", "Tuesday", "Wednesday", "T
 
 void put_week_days_to_vector(std::vector<std::string> &vector, const int CLASSES_PER_DAY)
 {
-    int i = 0, day = 0;
+    std::size_t i = 0, day = 0;
 
     do
     {
@@ -21,7 +21,7 @@ void put_week_days_to_vector(std::vector<std::string> &vector, const int CLASSES
 
 void put_separators_per_week_to_vector(std::vector<std::string> &vector, const int CLASSES_PER_DAY)
 {
-    for (int iterator = 0, sum = 0; iterator < vector.size(); iterator += (CLASSES_PER_DAY * CLASS_DAYS) + CLASS_DAYS + WHITESPACES_PER_WEEK, sum++)
+    for (std::size_t iterator = 0, sum = 0; iterator < vector.size(); iterator += CLASSES_PER_DAY * CLASS_DAYS + CLASS_DAYS + WHITESPACES_PER_WEEK, sum++)
     {
         if (iterator >= vector.size() - sum)
             break;
