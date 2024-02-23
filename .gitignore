@@ -33,4 +33,4 @@
 
 # Utils
 .vscode
-.txt
+*.txt
