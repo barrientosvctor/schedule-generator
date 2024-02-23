@@ -1,16 +1,13 @@
-EXE=output
-COMPILER=g++
+EXE=main
+CC=g++
 OBJS=main.o \
-    vector.o
+	vector.o
 
 all: main
 
 main: $(OBJS)
-	$(COMPILER) $? -o $(EXE) && ./$(EXE)
 
-main.o: main.cpp
-
-vector.o: vector.cpp
-
+%.o: %.cpp
+	$(CC) -c $< -o $@
 clean:
 	rm -rf *.o *.exe $(EXE)
