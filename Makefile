@@ -1,8 +1,7 @@
 EXE=output
 COMPILER=g++
 OBJS=main.o \
-    vector.o \
-    file.o
+    vector.o
 
 all: main
 
@@ -12,8 +11,6 @@ main: $(OBJS)
 main.o: main.cpp
 
 vector.o: vector.cpp
-
-file.o: file.cpp
 
 clean:
 	rm -rf *.o *.exe $(EXE)
