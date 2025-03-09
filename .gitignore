@@ -34,3 +34,5 @@
 # Utils
 .vscode
 *.txt
+!CMakeLists.txt
+build
