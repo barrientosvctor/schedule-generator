@@ -36,3 +36,4 @@
 *.txt
 !CMakeLists.txt
 build
+.cache
