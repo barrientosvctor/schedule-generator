@@ -38,7 +38,7 @@ int main()
 
     for (int i = 0; i < totalClasses; i++)
     {
-        std::cout << "Type a class: ";
+        std::cout << "Type a class for " << WEEK_DAYS[(i % 5)] << ": "; // TODO: Preserve same day of week when there's more than 1 class per day.
         std::getline(std::cin, input);
 
         arrClasses[i] = input;
