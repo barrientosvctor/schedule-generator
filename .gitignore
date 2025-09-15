@@ -37,3 +37,4 @@
 !CMakeLists.txt
 build
 .cache
+.vs/
