@@ -1,7 +1,7 @@
 #include "vector.h"
 #include <fstream>
 
-inline void print_schedule(std::vector<std::string> &vector_classes)
+static inline void print_schedule(std::vector<std::string> &vector_classes)
 {
     for (std::string item : vector_classes)
     {
@@ -9,11 +9,11 @@ inline void print_schedule(std::vector<std::string> &vector_classes)
     }
 }
 
-inline const std::string assignFileName(std::string const name) {
+static inline const std::string assignFileName(std::string const name) {
     return name.empty() ? "schedule" : name;
 }
 
-inline void write_schedule_into_file(std::ofstream &file, std::vector<std::string> &vector_classes) {
+static inline void write_schedule_into_file(std::ofstream &file, std::vector<std::string> &vector_classes) {
     for (std::size_t i = 0; i < vector_classes.size(); i++) {
         file << vector_classes[i] << std::endl;
     }
